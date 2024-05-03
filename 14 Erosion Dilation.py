@@ -1,0 +1,21 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+abc=cv2.imread("C:/Users/student/Documents/prerana kadam/blobs (1)new.png",0)
+plt.subplot(2,2,1)
+plt.title("Original image")
+plt.imshow(abc,cmap='gray')
+print(abc.dtype)
+struct=np.array([[255,0,255],[0,255,0],[255,0,255]],np.uint8)
+plt.subplot(2,2,2)
+plt.title("Structuring image")
+plt.imshow(struct,cmap='gray')
+img_erosion=cv2.erode(abc,struct,iterations=1)
+plt.subplot(2,2,3)
+plt.title("Erosion image")
+plt.imshow(img_erosion,cmap='gray')
+img_dilation=cv2.dilate(abc,struct,iterations=1)
+plt.subplot(2,2,4)
+plt.title("Dilation image")
+plt.imshow(img_dilation,cmap='gray')
+plt.show()

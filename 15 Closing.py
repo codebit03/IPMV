@@ -1,0 +1,21 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+abc=cv2.imread("C:/Users/student/Documents/prerana kadam/circles (1)new.png",0)
+plt.subplot(2,2,1)
+plt.title("Original image")
+plt.imshow(abc,cmap='gray')
+struct=np.array([[255,0,255],[0,255,0],[255,0,255]],np.uint8)
+img_dilate=cv2.dilate(abc,struct,iterations=1)
+plt.subplot(2,2,2)
+plt.title("dilate image")
+plt.imshow(img_dilate,cmap='gray')
+img_erosion=cv2.erode(img_dilate,struct,iterations=2)
+plt.subplot(2,2,3)
+plt.title("Eroded image")
+plt.imshow(img_erosion,cmap='gray')
+img_closing=cv2.morphologyEx(abc,cv2.MORPH_CLOSE,struct)
+plt.subplot(2,2,4)
+plt.title("Closing image")
+plt.imshow(img_closing,cmap='gray')
+plt.show()
